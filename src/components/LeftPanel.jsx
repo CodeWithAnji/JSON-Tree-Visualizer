@@ -63,7 +63,7 @@ export default function LeftPanel({ onVisualize, onClear }) {
 
         <button
           onClick={handleClear}
-          className="bg-gray-400 hover:bg-gray-500 text-white text-md py-2.5 rounded-lg transition-all w-[120px]"
+          className="bg-gray-400 hover:bg-gray-500 cursor-pointer text-white text-md py-2.5 rounded-lg transition-all w-[120px]"
         >
           Clear
         </button>

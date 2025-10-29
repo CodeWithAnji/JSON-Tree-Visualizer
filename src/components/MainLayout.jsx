@@ -12,8 +12,10 @@ export default function MainLayout() {
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
   };
+
+  // ✅ Corrected clear function
   const handleClear = () => {
-    setJsonData(null); // 🔥 Clears JSON Tree visualization
+    setParsedJson(null); // ✅ Clears JSON Tree visualization
   };
 
   return (
@@ -24,10 +26,11 @@ export default function MainLayout() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             JSON Tree Visualizer
           </h1>
-          <LeftPanel onVisualize={handleVisualize} />
+          {/* ✅ Pass handleClear to LeftPanel */}
+          <LeftPanel onVisualize={handleVisualize} onClear={handleClear} />
         </div>
 
-        {/* RIGHT PANEL (Search + TreeVisualizer) */}
+        {/* RIGHT PANEL */}
         <div className="flex flex-col w-full md:w-1/2 p-6">
           {/* Theme Toggle */}
           <div className="flex justify-end mb-4">
@@ -47,7 +50,7 @@ export default function MainLayout() {
             </div>
           </div>
 
-          {/* ✅ Pass JSON data to RightPanel */}
+          {/* ✅ Pass parsedJson to RightPanel */}
           <RightPanel jsonData={parsedJson} />
         </div>
       </div>

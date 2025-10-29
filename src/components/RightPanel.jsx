@@ -62,7 +62,7 @@ export default function RightPanel({ jsonData }) {
         {jsonData && (
           <button
             onClick={handleDownloadImage}
-            className="ml-3 bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-md shadow-md transition-all"
+            className="ml-3 bg-green-500 hover:bg-green-600 cursor-pointer text-white text-sm px-4 py-2 rounded-md shadow-md transition-all"
           >
             Download
           </button>
