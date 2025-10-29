@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import TreeVisualizer from "../components/TreeVisualizer";
+import * as htmlToImage from "html-to-image";
 
 export default function RightPanel({ jsonData }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchPath, setSearchPath] = useState("");
   const [message, setMessage] = useState("");
+  const treeRef = useRef(null); // reference to tree container
 
   const handleSearch = () => {
     if (searchValue.trim()) {
@@ -21,27 +23,50 @@ export default function RightPanel({ jsonData }) {
     else setMessage("");
   };
 
+  const handleDownloadImage = async () => {
+    if (!treeRef.current) return;
+    try {
+      const dataUrl = await htmlToImage.toPng(treeRef.current);
+      const link = document.createElement("a");
+      link.download = "json-tree.png";
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Failed to download image:", err);
+    }
+  };
+
   return (
     <div className="flex flex-col w-full">
-      {/* Search Bar */}
-      <label className="text-gray-700 dark:text-gray-200 mb-3 font-semibold text-base">
+      {/* Label */}
+      <label className="text-gray-700 dark:text-gray-200 mb-2 font-semibold text-base">
         Search by JSON Path
       </label>
 
-      <div className="flex w-full mb-3">
+      {/* Search bar and Download button on same row */}
+      <div className="flex items-center w-full mb-4">
         <input
           type="text"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="$.user.address.city"
-          className="flex-1 text-sm border p-2 border-gray-300 text-gray-800"
+          className="flex-1 text-sm border p-2 border-gray-300 text-gray-800 rounded-l-md"
         />
         <button
           onClick={handleSearch}
-          className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-r-md transition-colors cursor-pointer"
+          className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 transition-colors cursor-pointer"
         >
           Search
         </button>
+
+        {jsonData && (
+          <button
+            onClick={handleDownloadImage}
+            className="ml-3 bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-md shadow-md transition-all"
+          >
+            Download
+          </button>
+        )}
       </div>
 
       {/* Status Message */}
@@ -60,11 +85,13 @@ export default function RightPanel({ jsonData }) {
       )}
 
       {/* JSON Tree */}
-      <TreeVisualizer
-        jsonData={jsonData}
-        searchPath={searchPath}
-        onSearchResult={handleSearchResult}
-      />
+      <div ref={treeRef} className="flex-1">
+        <TreeVisualizer
+          jsonData={jsonData}
+          searchPath={searchPath}
+          onSearchResult={handleSearchResult}
+        />
+      </div>
     </div>
   );
 }

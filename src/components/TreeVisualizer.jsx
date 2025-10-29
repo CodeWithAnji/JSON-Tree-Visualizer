@@ -18,9 +18,10 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
 
   const { fitView, zoomIn, zoomOut } = useReactFlow();
 
-  // Build nodes and edges from JSON
+  // 🔹 Build nodes and edges from JSON
   useEffect(() => {
-    if (!jsonData || typeof jsonData !== "object") {
+    if (!jsonData || Object.keys(jsonData).length === 0) {
+      // clear everything if JSON is empty
       setRawNodes([]);
       setRawEdges([]);
       return;
@@ -42,7 +43,7 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     }
   }, [jsonData]);
 
-  // Highlight search result
+  // 🔹 Highlight search result
   useEffect(() => {
     if (!searchPath) {
       setHighlightedNodeId(null);
@@ -61,7 +62,7 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     }
   }, [searchPath, rawNodes, fitView, onSearchResult]);
 
-  // Styling with highlight
+  // 🔹 Styling with highlight
   const nodes = useMemo(
     () =>
       rawNodes.map((node) => ({
@@ -70,18 +71,26 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
           ...node.style,
           border:
             node.id === highlightedNodeId
-              ? "2px solid #FF0000" // pure red border for matched node
+              ? "2px solid #FF0000"
               : "1px solid rgba(255,255,255,0.3)",
           boxShadow:
             node.id === highlightedNodeId
-              ? "0 0 10px 3px rgba(255, 0, 0, 0.8)" // glowing red shadow
+              ? "0 0 10px 3px rgba(255, 0, 0, 0.8)"
               : "0 2px 6px rgba(0,0,0,0.15)",
-
           cursor: "pointer",
         },
       })),
     [rawNodes, highlightedNodeId]
   );
+
+  // 🔹 Show empty state
+  if (!jsonData || Object.keys(jsonData).length === 0) {
+    return (
+      <div className="h-[600px] flex items-center justify-center text-gray-400">
+        No data to display
+      </div>
+    );
+  }
 
   if (error) {
     return (
@@ -91,18 +100,9 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     );
   }
 
-  if (!jsonData) {
-    return (
-      <div className="h-[600px] flex items-center justify-center text-gray-400">
-        No data to display
-      </div>
-    );
-  }
-
   return (
     <div className="relative w-full h-[600px]">
-      {/* Custom Zoom Controls */}
-      {/* Custom Zoom Controls */}
+      {/* Zoom Controls */}
       <div
         className="absolute top-3 right-3 flex flex-col bg-white/90 dark:bg-gray-900/90 
                 backdrop-blur-md rounded-xl shadow-lg border border-gray-200 
@@ -135,7 +135,7 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
         </button>
       </div>
 
-      {/* Tooltip for node hover */}
+      {/* Tooltip for hover */}
       {hoveredNode && (
         <div
           className="absolute bg-gray-900 text-white text-xs p-2 rounded shadow-lg z-20"
@@ -158,6 +158,7 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
 
       {/* React Flow Graph */}
       <ReactFlow
+        key={JSON.stringify(jsonData)} // 🔥 force re-render when JSON changes
         nodes={nodes}
         edges={rawEdges}
         fitView

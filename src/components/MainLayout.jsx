@@ -12,6 +12,9 @@ export default function MainLayout() {
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
   };
+  const handleClear = () => {
+    setJsonData(null); // 🔥 Clears JSON Tree visualization
+  };
 
   return (
     <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-stretch mx-auto">
