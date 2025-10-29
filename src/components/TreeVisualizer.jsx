@@ -70,12 +70,13 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
           ...node.style,
           border:
             node.id === highlightedNodeId
-              ? "2px solid #FFD700"
+              ? "2px solid #FF0000" // pure red border for matched node
               : "1px solid rgba(255,255,255,0.3)",
           boxShadow:
             node.id === highlightedNodeId
-              ? "0 0 10px 3px #FFD700"
+              ? "0 0 10px 3px rgba(255, 0, 0, 0.8)" // glowing red shadow
               : "0 2px 6px rgba(0,0,0,0.15)",
+
           cursor: "pointer",
         },
       })),
@@ -111,7 +112,7 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
           onClick={() => zoomIn()}
           className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 
                hover:bg-blue-500 hover:text-white transition-colors duration-200 border-b 
-               border-gray-200 dark:border-gray-700 cursor-pointer "
+               border-gray-200 dark:border-gray-700 "
         >
           Zoom In
         </button>
