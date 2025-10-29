@@ -29,7 +29,7 @@ export default function LeftPanel({ onVisualize }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-[600px]">
+    <div className="flex flex-col w-full h-[670px]">
       <label className="text-gray-700 dark:text-gray-200 mb-3 font-semibold text-base">
         Paste or type JSON data
       </label>

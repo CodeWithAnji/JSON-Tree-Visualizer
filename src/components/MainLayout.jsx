@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import LeftPanel from "../components/LeftPanel";
 import RightPanel from "../components/RightPanel";
 
 export default function MainLayout() {
+  const [parsedJson, setParsedJson] = useState(null);
+
   const handleVisualize = (data) => {
-    console.log("Parsed JSON:", data);
+    setParsedJson(data);
   };
 
   const toggleTheme = () => {
@@ -12,19 +14,19 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-stretch">
-      {/* Combined Panels */}
+    <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-stretch mx-auto">
       <div className="flex flex-col md:flex-row w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
-        {/* Left Panel */}
-        <div className="flex flex-col w-full md:w-1/2 p-6 border-r border-gray-200 dark:border-gray-800">
+        {/* LEFT PANEL */}
+        <div className="flex flex-col w-full md:w-1/2 p-6">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             JSON Tree Visualizer
           </h1>
           <LeftPanel onVisualize={handleVisualize} />
         </div>
 
-        {/* Right Panel */}
+        {/* RIGHT PANEL (Search + TreeVisualizer) */}
         <div className="flex flex-col w-full md:w-1/2 p-6">
+          {/* Theme Toggle */}
           <div className="flex justify-end mb-4">
             <div className="flex items-center gap-2">
               <span className="text-gray-600 dark:text-gray-300 text-sm">
@@ -42,7 +44,8 @@ export default function MainLayout() {
             </div>
           </div>
 
-          <RightPanel />
+          {/* ✅ Pass JSON data to RightPanel */}
+          <RightPanel jsonData={parsedJson} />
         </div>
       </div>
     </div>
