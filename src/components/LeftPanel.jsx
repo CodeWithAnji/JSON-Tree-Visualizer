@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function JsonInput({ onVisualize }) {
+export default function LeftPanel({ onVisualize }) {
   const [input, setInput] = useState(
     JSON.stringify(
       {
@@ -12,7 +12,7 @@ export default function JsonInput({ onVisualize }) {
         },
       },
       null,
-      2
+      4
     )
   );
 
@@ -29,21 +29,28 @@ export default function JsonInput({ onVisualize }) {
   };
 
   return (
-    <div className="flex flex-col w-full md:w-1/2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
-      <label className="text-gray-700 dark:text-gray-200 mb-2 font-medium">
+    <div className="flex flex-col w-full h-[600px]">
+      <label className="text-gray-700 dark:text-gray-200 mb-3 font-semibold text-base">
         Paste or type JSON data
       </label>
+
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        rows={16}
         spellCheck="false"
-        className="font-mono text-sm rounded-lg border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+        className="font-[IBM Plex Mono] text-[15px] flex-1 rounded-lg border border-gray-300 bg-white dark:border-gray-700 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none  dark:bg-gray-800 text-gray-700 dark:text-gray-100 tracking-[0.02em] leading-[1.7]"
+        style={{
+          fontVariantLigatures: "none",
+          tabSize: 4,
+          whiteSpace: "pre",
+        }}
       />
+
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+
       <button
         onClick={handleVisualize}
-        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors"
+        className="mt-4 bg-blue-500 cursor-pointer hover:bg-blue-600 text-white text-md  py-2.5 rounded-lg transition-all w-[250px]"
       >
         Generate Tree
       </button>
