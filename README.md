@@ -7,7 +7,7 @@ An interactive web application built with **React**, **Vite**, **Tailwind CSS**,
 👉 **[Try It Here](https://json-tree-visualizer-wine.vercel.app/)**
 
 - ### Demo Preview
-- 
+   
 Below are a few screenshots of the JSON Tree Visualizer in action:
 
 | Home Page | Tree Visualization | Search Feature |
