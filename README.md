@@ -59,7 +59,7 @@ npm run dev
 
 Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
-## 🚀 Deployment Guide
+## Deployment Guide
 
 ### Deploy on Vercel
 
@@ -70,7 +70,7 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 5. Vercel automatically detects **Vite + React** setup.  
 6. Click **Deploy** — your app will be live in seconds.  
 
-### Deployed Link
+### Deployed Link : https://json-tree-visualizer-wine.vercel.app/
 
 
 
