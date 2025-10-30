@@ -21,7 +21,9 @@ An interactive web application built with **React**, **Vite**, **Tailwind CSS**,
   - Highlights matching node and automatically pans to its position.
   - Displays message when a match is or isn’t found.
 
-
+- **Zoom Controls**
+  - Buttons for **Zoom In**, **Zoom Out**, and **Fit View** integrated in the canvas.
+  - Allows easy navigation of large JSON trees.
 - **Clear/Reset Button** → Clears both input and visualization.
 - **Copy JSON Path** → Click a node to copy its JSON path.
 - **Download as Image** → Export the JSON tree as a `.png`.
