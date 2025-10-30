@@ -43,7 +43,8 @@ An interactive web application built with **React**, **Vite**, **Tailwind CSS**,
 
 ### 1. Clone the Repository
 
-git clone https://github.com/<your-username>/json-tree-visualizer.git
+git clone https://github.com/CodeWithAnji/JSON-Tree-Visualizer.git
+
 cd json-tree
 
 ### 2. Install Dependencies
@@ -56,6 +57,6 @@ npm run dev
 
 Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
-### License
+## License
 
 This project is open-source and free to use for educational and portfolio purposes.
