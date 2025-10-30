@@ -1,6 +1,7 @@
 # JSON Tree Visualizer
 
-An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** that visualizes JSON data as a hierarchical tree structure.
+An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** to visualize complex JSON data structures as hierarchical trees.  
+Easily explore, search, and export visual representations of JSON — perfect for developers and data enthusiasts.
 
 ### Live Demo
 
@@ -103,10 +104,6 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 5. Vercel automatically detects **Vite + React** setup.
  
 6. Click **Deploy** — your app will be live in seconds.  
-
-### Deployed Link :  
-
-https://json-tree-visualizer-wine.vercel.app/
 
 
 ## 📝 License
