@@ -2,6 +2,10 @@
 
 An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** that visualizes JSON data as a hierarchical tree structure.
 
+### Live Demo
+
+👉 **[Try It Here](https://json-tree-visualizer-wine.vercel.app/)**
+
 ### Demo Preview
 
 Below are a few screenshots of the JSON Tree Visualizer in action:
