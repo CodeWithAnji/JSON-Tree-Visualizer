@@ -59,6 +59,22 @@ npm run dev
 
 Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
+## 🚀 Deployment Guide
+
+### Deploy on Vercel
+
+1. Push your project to **GitHub**.  
+2. Go to [https://vercel.com/](https://vercel.com/).  
+3. Click **“Add New Project” → “Import Git Repository”**.  
+4. Select your **json-tree-visualizer** repository.  
+5. Vercel automatically detects **Vite + React** setup.  
+6. Click **Deploy** — your app will be live in seconds.  
+
+### Deployed Link
+
+
+
+
 ## License
 
 This project is open-source and free to use for educational and portfolio purposes.
