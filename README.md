@@ -10,10 +10,10 @@ Below are a few screenshots of the JSON Tree Visualizer in action:
 ![Home Page](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/a6d17341b50b2b1b8a3ae5a4d0a66a86065b731b/src/Screenshorts/home.png)
 
 ### Tree Visualization
-![Tree Visualization](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/d2da90d88e551667f8de80fd9fa14ae03e9eb0f1/src/Screenshorts/treevisualizaion.png)
+![Tree Visualization](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/cfb3f73097365ca53f1ecccf0404ac098bac8d25/src/Screenshorts/treevisual.png)
 
 ### Search Functionality
-![Search Feature](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/d2da90d88e551667f8de80fd9fa14ae03e9eb0f1/src/Screenshorts/treevisualizaion.png)
+![Search Feature](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/cfb3f73097365ca53f1ecccf0404ac098bac8d25/src/Screenshorts/searching.png)
 
 
 ## Features
