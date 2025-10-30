@@ -2,9 +2,21 @@
 
 An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** that visualizes JSON data as a hierarchical tree structure.
 
+### Demo Preview
+
+Below are a few screenshots of the JSON Tree Visualizer in action:
+
+### Home Page
+![Home Page](./public/screenshots/home.png)
+
+### Tree Visualization
+![Tree Visualization](./public/screenshots/tree-visualization.png)
+
+### Search Functionality
+![Search Feature](./public/screenshots/search.png)
+
 
 ## Features
-
 
 - **JSON Input & Validation**
   - Paste or type JSON data in a text area.
@@ -13,13 +25,16 @@ An interactive web application built with **React**, **Vite**, **Tailwind CSS**,
 
 - **Tree Visualization (React Flow)**
   - Displays hierarchical JSON structure using nodes and edges.
-  - Object, Array, and Primitive nodes are color-coded.
+  - Nodes are color-coded based on data type:
+  - **Objects** → Blue
+  - **Arrays** → Green
+  - **Primitives (string/number/boolean/null)** → Orange
   - Lines connect parent and child nodes clearly.
 
 - **Search Functionality**
   - Search by JSON path (e.g., `$.user.address.city` or `items[0].name`).
   - Highlights matching node and automatically pans to its position.
-  - Displays message when a match is or isn’t found.
+  - Shows **“Match found”** or **“No match found”** messages.
 
 - **Zoom Controls**
   - Buttons for **Zoom In**, **Zoom Out**, and **Fit View** integrated in the canvas.
@@ -70,9 +85,9 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 5. Vercel automatically detects **Vite + React** setup.  
 6. Click **Deploy** — your app will be live in seconds.  
 
-### Deployed Link : https://json-tree-visualizer-wine.vercel.app/
+### Deployed Link :  
 
-
+https://json-tree-visualizer-wine.vercel.app/
 
 
 ## License
