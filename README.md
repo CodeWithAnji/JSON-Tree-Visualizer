@@ -81,13 +81,15 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
 ## 🧠 How to Use 
 
-1. Paste your JSON data into the input panel (left side).
+1. Paste your JSON data into the input panel.
 
 2. Click "Visualize JSON" to generate a tree structure.
 
-3. Use the search bar to highlight specific keys or values.
+3. Use the Search Bar to find specific keys or paths.
 
-4. Download the visualization as an image if needed.
+4. Click any node to copy its JSON path.
+
+5. Use Zoom Controls or Download options as needed.
 
 ## 🌐 Deployment Guide
 
