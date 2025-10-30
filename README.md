@@ -2,8 +2,6 @@
 
 An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** that visualizes JSON data as a hierarchical tree structure.
 
-This project was created as part of the **APIWIZ Frontend SDE Role Assignment**.
-
 
 ## Features
 
@@ -41,3 +39,23 @@ This project was created as part of the **APIWIZ Frontend SDE Role Assignment**.
 | **JavaScript (ES6+)** | Core Logic & Interactivity |
 
 
+##  Run Locally
+
+### 1. Clone the Repository
+
+git clone https://github.com/<your-username>/json-tree-visualizer.git
+cd json-tree
+
+### 2. Install Dependencies
+
+npm install
+
+### 3. Start the Developement Server
+
+npm run dev
+
+Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
+
+### License
+
+This project is open-source and free to use for educational and portfolio purposes.
