@@ -1,16 +1,16 @@
-# JSON Tree Visualizer
+- # JSON Tree Visualizer
 
 An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** to visualize complex JSON data structures as hierarchical trees. Easily explore, search, and export visual representations of JSON — perfect for developers and data enthusiasts.
 
-### Live Demo
+- ### Live Demo
 
 👉 **[Try It Here](https://json-tree-visualizer-wine.vercel.app/)**
 
-### Demo Preview
+- ### Demo Preview
 
 Below are a few screenshots of the JSON Tree Visualizer in action:
 
-### Home Page
+ ### Home Page
 ![Home Page](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/a6d17341b50b2b1b8a3ae5a4d0a66a86065b731b/src/Screenshorts/home.png)
 
 ### Tree Visualization
