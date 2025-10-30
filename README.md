@@ -16,7 +16,7 @@ Below are a few screenshots of the JSON Tree Visualizer in action:
 ![Search Feature](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/cfb3f73097365ca53f1ecccf0404ac098bac8d25/src/Screenshorts/searching.png)
 
 
-## Features
+## 🚀 Features
 
 - **JSON Input & Validation**
   - Paste or type JSON data in a text area.
@@ -45,7 +45,7 @@ Below are a few screenshots of the JSON Tree Visualizer in action:
 - **Responsive Design** → Works across desktop and mobile layouts.
 
 
-##  Tech Stack
+## 📦Tech Stack
 
 | Technology | Purpose |
 |-------------|----------|
@@ -56,7 +56,7 @@ Below are a few screenshots of the JSON Tree Visualizer in action:
 | **JavaScript (ES6+)** | Core Logic & Interactivity |
 
 
-##  Run Locally
+## ⚙️ Installation and Setup
 
 ### 1. Clone the Repository
 
@@ -74,7 +74,7 @@ npm run dev
 
 Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
-## How to Use 
+## 🧠 How to Use 
 
 1. Paste your JSON data into the input panel (left side).
 
@@ -84,7 +84,7 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 
 4. Download the visualization as an image if needed.
 
-## Deployment Guide
+## 🌐 Deployment Guide
 
 ### Deploy on Vercel
 
@@ -105,6 +105,6 @@ Then open the lcoal URL shown in yout terminal (Usually http://localhost:5173)
 https://json-tree-visualizer-wine.vercel.app/
 
 
-## License
+## 📝 License
 
 This project is open-source and free to use for educational and portfolio purposes.
