@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   ReactFlow,
   Background,
@@ -15,25 +15,19 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
   const [highlightedNodeId, setHighlightedNodeId] = useState(null);
   const [hoveredNode, setHoveredNode] = useState(null);
   const [error, setError] = useState(null);
-
   const { fitView, zoomIn, zoomOut } = useReactFlow();
 
-  // 🔹 Build nodes and edges from JSON
   useEffect(() => {
     if (!jsonData || Object.keys(jsonData).length === 0) {
-      // clear everything if JSON is empty
       setRawNodes([]);
       setRawEdges([]);
       return;
     }
 
     try {
-      const { nodes: builtNodes, edges: builtEdges } = buildNodesEdges(
-        jsonData,
-        "root"
-      );
-      setRawNodes(builtNodes);
-      setRawEdges(builtEdges);
+      const { nodes, edges } = buildNodesEdges(jsonData, "root");
+      setRawNodes(nodes);
+      setRawEdges(edges);
       setError(null);
     } catch (err) {
       console.error("Error building tree:", err);
@@ -43,7 +37,6 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     }
   }, [jsonData]);
 
-  // 🔹 Highlight search result
   useEffect(() => {
     if (!searchPath) {
       setHighlightedNodeId(null);
@@ -62,7 +55,6 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     }
   }, [searchPath, rawNodes, fitView, onSearchResult]);
 
-  // 🔹 Styling with highlight
   const nodes = useMemo(
     () =>
       rawNodes.map((node) => ({
@@ -83,10 +75,9 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
     [rawNodes, highlightedNodeId]
   );
 
-  // 🔹 Show empty state
   if (!jsonData || Object.keys(jsonData).length === 0) {
     return (
-      <div className="h-[600px] flex items-center justify-center text-gray-400">
+      <div className="h-[600px] flex items-center justify-center text-gray-400 dark:text-gray-500 transition-colors">
         No data to display
       </div>
     );
@@ -94,81 +85,45 @@ function TreeCanvas({ jsonData, searchPath, onSearchResult }) {
 
   if (error) {
     return (
-      <div className="h-[600px] flex items-center justify-center text-red-600">
+      <div className="h-[600px] flex items-center justify-center text-red-600 dark:text-red-400">
         Error: {error}
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-[600px]">
-      {/* Zoom Controls */}
-      <div
-        className="absolute top-3 right-3 flex flex-col bg-white/90 dark:bg-gray-900/90 
-                backdrop-blur-md rounded-xl shadow-lg border border-gray-200 
-                dark:border-gray-700 z-20 overflow-hidden"
-      >
+    <div className="relative w-full h-[600px] transition-colors duration-300">
+      <div className="absolute top-3 right-3 flex flex-col bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden">
         <button
           onClick={() => zoomIn()}
-          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 
-               hover:bg-blue-500 hover:text-white transition-colors duration-200 border-b 
-               border-gray-200 dark:border-gray-700 "
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700"
         >
           Zoom In
         </button>
 
         <button
           onClick={() => zoomOut()}
-          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 
-               hover:bg-blue-500 hover:text-white transition-colors duration-200 border-b 
-               border-gray-200 dark:border-gray-700"
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700"
         >
           Zoom Out
         </button>
 
         <button
           onClick={() => fitView({ padding: 0.2, duration: 400 })}
-          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 
-               hover:bg-green-500 hover:text-white transition-colors duration-200"
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-green-500 hover:text-white transition-colors duration-200"
         >
           Fit View
         </button>
       </div>
 
-      {/* Tooltip for hover */}
-      {hoveredNode && (
-        <div
-          className="absolute bg-gray-900 text-white text-xs p-2 rounded shadow-lg z-20"
-          style={{
-            top: hoveredNode.y + 20,
-            left: hoveredNode.x + 20,
-            pointerEvents: "none",
-          }}
-        >
-          <div>
-            <b>Path:</b> {hoveredNode.data.path}
-          </div>
-          {"value" in hoveredNode.data && (
-            <div>
-              <b>Value:</b> {String(hoveredNode.data.value)}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* React Flow Graph */}
       <ReactFlow
-        key={JSON.stringify(jsonData)} // 🔥 force re-render when JSON changes
+        key={JSON.stringify(jsonData)}
         nodes={nodes}
         edges={rawEdges}
         fitView
         nodesDraggable={false}
         panOnDrag={true}
         zoomOnScroll={true}
-        onNodeMouseEnter={(_, node) =>
-          setHoveredNode({ ...node, x: node.position.x, y: node.position.y })
-        }
-        onNodeMouseLeave={() => setHoveredNode(null)}
       >
         <Background gap={16} />
         <Controls showInteractive={false} />
@@ -183,7 +138,7 @@ export default function TreeVisualizer({
   onSearchResult,
 }) {
   return (
-    <div className="w-full h-[600px] bg-white dark:bg-gray-900 rounded-md p-2 border border-gray-300">
+    <div className="w-full h-[600px] bg-white dark:bg-gray-900 rounded-md p-2 border border-gray-300 dark:border-gray-700 transition-colors duration-300">
       <ReactFlowProvider>
         <TreeCanvas
           jsonData={jsonData}

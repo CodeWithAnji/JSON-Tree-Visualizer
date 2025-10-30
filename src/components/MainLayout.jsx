@@ -1,56 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LeftPanel from "../components/LeftPanel";
 import RightPanel from "../components/RightPanel";
 
 export default function MainLayout() {
   const [parsedJson, setParsedJson] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const handleVisualize = (data) => {
-    setParsedJson(data);
-  };
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-  };
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
+    }
+  }, []);
 
-  // ✅ Corrected clear function
-  const handleClear = () => {
-    setParsedJson(null); // ✅ Clears JSON Tree visualization
-  };
+  const handleVisualize = (data) => setParsedJson(data);
+  const handleClear = () => setParsedJson(null);
 
   return (
     <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-stretch mx-auto">
-      <div className="flex flex-col md:flex-row w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
-        {/* LEFT PANEL */}
+      <div className="flex flex-col md:flex-row w-full bg-white  rounded-xl shadow-lg overflow-hidden transition-colors duration-300">
         <div className="flex flex-col w-full md:w-1/2 p-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-3xl font-extrabold mb-4 bg-gradient-to-r from-[#19183B] via-[#708993] to-[#A1C2BD] bg-clip-text text-transparent">
             JSON Tree Visualizer
           </h1>
-          {/* ✅ Pass handleClear to LeftPanel */}
+
           <LeftPanel onVisualize={handleVisualize} onClear={handleClear} />
         </div>
 
-        {/* RIGHT PANEL */}
         <div className="flex flex-col w-full md:w-1/2 p-6">
-          {/* Theme Toggle */}
-          <div className="flex justify-end mb-4">
-            <div className="flex items-center gap-2">
-              <span className="text-gray-600 dark:text-gray-300 text-sm">
-                Dark / Light
-              </span>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  onChange={toggleTheme}
-                  className="sr-only peer"
-                />
-                <div className="w-10 h-5 bg-gray-300 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 transition-colors"></div>
-                <div className="absolute left-[3px] top-[3px] bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
-              </label>
-            </div>
-          </div>
-
-          {/* ✅ Pass parsedJson to RightPanel */}
           <RightPanel jsonData={parsedJson} />
         </div>
       </div>

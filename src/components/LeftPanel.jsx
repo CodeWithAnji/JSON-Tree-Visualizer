@@ -6,9 +6,9 @@ export default function LeftPanel({ onVisualize, onClear }) {
       {
         user: {
           id: 1,
-          name: "John Doe",
-          address: { city: "New York", country: "USA" },
-          items: [{ name: "item1" }, { name: "item2" }],
+          name: "Raj",
+          address: { city: "Hyderabad", country: "INDIA" },
+          items: [{ name: "Laptap" }, { name: "Smartphone" }],
         },
       },
       null,
@@ -30,7 +30,7 @@ export default function LeftPanel({ onVisualize, onClear }) {
   const handleClear = () => {
     setInput("");
     setError("");
-    onClear(); // clears tree on the right
+    onClear();
   };
 
   return (

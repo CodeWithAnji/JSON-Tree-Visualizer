@@ -6,7 +6,7 @@ export default function RightPanel({ jsonData }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchPath, setSearchPath] = useState("");
   const [message, setMessage] = useState("");
-  const treeRef = useRef(null); // reference to tree container
+  const treeRef = useRef(null);
 
   const handleSearch = () => {
     if (searchValue.trim()) {
@@ -18,8 +18,8 @@ export default function RightPanel({ jsonData }) {
   };
 
   const handleSearchResult = (found) => {
-    if (found === true) setMessage("✅ Match found");
-    else if (found === false) setMessage("❌ No match found");
+    if (found === true) setMessage("Match found");
+    else if (found === false) setMessage("No match found");
     else setMessage("");
   };
 
@@ -38,19 +38,18 @@ export default function RightPanel({ jsonData }) {
 
   return (
     <div className="flex flex-col w-full">
-      {/* Label */}
+      {/* Search Bar */}
       <label className="text-gray-700 dark:text-gray-200 mb-2 font-semibold text-base">
         Search by JSON Path
       </label>
 
-      {/* Search bar and Download button on same row */}
       <div className="flex items-center w-full mb-4">
         <input
           type="text"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="$.user.address.city"
-          className="flex-1 text-sm border p-2 border-gray-300 text-gray-800 rounded-l-md"
+          className="flex-1 text-sm border p-2 border-gray-300 text-gray-800 rounded-l-md dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
         />
         <button
           onClick={handleSearch}
@@ -69,13 +68,13 @@ export default function RightPanel({ jsonData }) {
         )}
       </div>
 
-      {/* Status Message */}
+      {/* Message */}
       {message && (
         <div
           className={`text-sm mb-3 italic ${
-            message.includes("✅")
+            message === "Match found"
               ? "text-green-600"
-              : message.includes("❌")
+              : message === "No match found"
               ? "text-red-600"
               : "text-gray-600"
           }`}
