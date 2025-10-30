@@ -1,4 +1,4 @@
-- # JSON Tree Visualizer
+# JSON Tree Visualizer
 
 An interactive web application built with **React**, **Vite**, **Tailwind CSS**, and **React Flow** to visualize complex JSON data structures as hierarchical trees. Easily explore, search, and export visual representations of JSON — perfect for developers and data enthusiasts.
 
