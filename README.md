@@ -7,7 +7,7 @@ An interactive web application built with **React**, **Vite**, **Tailwind CSS**,
 Below are a few screenshots of the JSON Tree Visualizer in action:
 
 ### Home Page
-![Home Page](./public/screenshots/home.png)
+![Home Page]([./public/screenshots/home.png](https://github.com/CodeWithAnji/JSON-Tree-Visualizer/blob/a6d17341b50b2b1b8a3ae5a4d0a66a86065b731b/src/Screenshorts/home.png))
 
 ### Tree Visualization
 ![Tree Visualization](./public/screenshots/tree-visualization.png)
